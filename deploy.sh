@@ -101,7 +101,8 @@ echo "$DEPLOYMENT_TARGET"
 if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
   echo "Found composer.json"
   pushd "$DEPLOYMENT_TARGET"
-  composer install $COMPOSER_ARGS
+  curl -sS https://getcomposer.org/installer | php
+  php composer.phar install $COMPOSER_ARGS
   exitWithMessageOnError "Composer install failed"
   popd
 fi
