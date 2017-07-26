@@ -16,10 +16,11 @@
     "mysql-workbench-schema-exporter/mysql-workbench-schema-exporter" : "v3.0.2",
     "mysql-workbench-schema-exporter/doctrine2-exporter" : "3.0.0",
     "symfony/assetic-bundle" : "v2.8.0",
-    "doctrine/doctrine-fixtures-bundle" : "2.3.0"
+    "doctrine/doctrine-fixtures-bundle" : "2.3.0",
+    "sensio/generator-bundle" : "^3.0"
   },
   "require-dev" : {
-    "sensio/generator-bundle" : "^3.0",
+
     "symfony/phpunit-bridge" : "^3.0"
   },
   "license" : "MIT",
@@ -49,10 +50,5 @@
     },
     "classmap" : [ "app/AppKernel.php", "app/AppCache.php" ]
   },
-  "type" : "training",
-  "config" : {
-    "platform" : {
-      "php" : "5.5.9"
-    }
-  }
+  "type" : "training"
 }
