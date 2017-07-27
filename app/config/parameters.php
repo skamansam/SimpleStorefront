@@ -5,7 +5,7 @@ $connstr = getenv('SQLAZURECONNSTR_defaultConnection');
 
 
 #hostname
-preg_match('/Data\sSource=(?:tcp:)?([^:,]+):/', $connstr, $matches);
+preg_match('/Data\sSource=(?:tcp:)?([^:,]+)/', $connstr, $matches);
 $container->setParameter('database_host', $matches[1]);
 
 #port
