@@ -1,6 +1,6 @@
 <?php
 // app/config/parameters.php
-$connstr = getenv('MYSQLCONNSTR_');
+$connstr = getenv('SQLAZURECONNSTR_MYSQLCONNSTR_');
 // $connstr = "Database=localdb;Data Source=127.0.0.1:53269;User Id=azure;Password=6#vWHD_$";
 
 
