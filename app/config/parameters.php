@@ -10,8 +10,8 @@ $container->setParameter('database_host', $matches[1]);
 
 #port
 preg_match('/Data\sSource=(tcp:)?[^:]+:([^;,]+)/', $connstr, $matches);
-// $container->setParameter('database_port', $matches[1]);
-$container->setParameter('database_port', 3306);
+$container->setParameter('database_port', $matches[1]);
+// $container->setParameter('database_port', 3306);
 
 #username
 preg_match('/User\sId=([^;]+)/', $connstr, $matches);
