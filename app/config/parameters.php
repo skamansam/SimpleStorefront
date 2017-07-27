@@ -5,12 +5,12 @@ $connstr = getenv('SQLAZURECONNSTR_defaultConnection');
 
 
 #hostname
-preg_match('/Data\sSource=([^:]+):/', $connstr, $matches);
+preg_match('/Data\sSource=(tcp:)?([^:,]+):/', $connstr, $matches);
 // printf("setParameter('database_host', $matches[1]);");
 $container->setParameter('database_host', $matches[1]);
 
 #port
-preg_match('/Data\sSource=[^:]+:([^;]+)/', $connstr, $matches);
+preg_match('/Data\sSource=(tcp:)?[^:]+:([^;,]+)/', $connstr, $matches);
 // printf("setParameter('database_port', $matches[1]);");
 $container->setParameter('database_port', $matches[1]);
 
@@ -25,7 +25,7 @@ preg_match('/Password=([^;]+)/', $connstr, $matches);
 $container->setParameter('database_password', $matches[1]);
 #db_name
 
-preg_match('/Database=([^;]+)/', $connstr, $matches);
+preg_match('/Initial\sCatalog=([^;]+)/', $connstr, $matches);
 // printf("setParameter('database_name', $matches[1]);");
 $container->setParameter('database_name', $matches[1]);
 
