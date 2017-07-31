@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
             new NoInc\SimpleStorefrontBundle\NoIncSimpleStorefrontBundle(),
         ];
