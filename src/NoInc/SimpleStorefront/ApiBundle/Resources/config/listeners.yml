@@ -1,0 +1,6 @@
+services:
+#  fos_user.listener.authentication:
+#    class: 'NoInc\SimpleStorefront\ApiBundle\Listener\Event\AuthenticationListener'
+#    arguments: [ '@fos_user.security.login_manager', '%fos_user.firewall_name%' ]
+#    tags:
+#    - 'kernel.event_subscriber'

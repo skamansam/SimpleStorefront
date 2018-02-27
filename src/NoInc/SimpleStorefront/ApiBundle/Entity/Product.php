@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ApiResource(iri="http://schema.org/Product", collectionOperations={"get"={"method"="GET", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "post"={"method"="POST", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}}, itemOperations={"get"={"method"="GET", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "put"={"method"="PUT", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "delete"={"method"="DELETE", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}}, attributes={"filters"={"recipe.id"}, "normalization_context"={"groups"={""}}, "denormalization_context"={"groups"={""}}})
+ * @ApiResource(iri="http://schema.org/Product", collectionOperations={"get"={"method"="GET", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "post"={"method"="POST", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}}, itemOperations={"get"={"method"="GET", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "put"={"method"="PUT", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}, "delete"={"method"="DELETE", "normalization_context"={"groups"={"output"}}, "denormalization_context"={"groups"={"input"}}}}, attributes={"filters"={"product.recipe_filter"}, "normalization_context"={"groups"={""}}, "denormalization_context"={"groups"={""}}})
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
  *
  * @see http://schema.org/Product Documentation on Schema.org
@@ -40,13 +40,11 @@ class Product
     protected $createdAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="NoInc\SimpleStorefront\ApiBundle\Entity\Recipe")
+     * @ORM\ManyToOne(targetEntity="NoInc\SimpleStorefront\ApiBundle\Entity\Recipe")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"output", "input"})
      *
-     * @var Recipe
-     *
-     * @Assert\NotNull
+     * @var Recipe|null
      */
     protected $recipe;
 
@@ -67,14 +65,14 @@ class Product
         return $this->createdAt;
     }
 
-    public function setRecipe(Recipe $recipe): self
+    public function setRecipe(?Recipe $recipe): self
     {
         $this->recipe = $recipe;
 
         return $this;
     }
 
-    public function getRecipe(): Recipe
+    public function getRecipe(): ?Recipe
     {
         return $this->recipe;
     }

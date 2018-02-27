@@ -1,10 +1,11 @@
 <?php
-namespace NoInc\SimpleStorefront\ApiBundle\Controller;
+namespace NoInc\SimpleStorefront\ApiBundle\Controller\Api;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends Controller
 {
@@ -14,8 +15,13 @@ class UserController extends Controller
      */
     public function currentAction(Request $request)
     {
+        $result = [];
+        
         $user = $this->getUser();
+        if ( $user ) {
+            $result ['id'] = $user->getId();
+        }
 
-        return $user;
+        return new JsonResponse($result);
     }
 }

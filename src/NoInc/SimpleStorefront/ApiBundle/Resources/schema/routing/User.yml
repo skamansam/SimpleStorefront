@@ -11,6 +11,6 @@ types:
         enabled: true
       item_delete:
         enabled: true
-    itemOperations:
+    collectionOperations:
       current:
         route_name: "get_user_current"
