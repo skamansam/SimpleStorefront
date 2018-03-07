@@ -25,6 +25,21 @@ const isDevelop = () => {
     return false;
 }
 
+gulp.task('vendor-styles', () => {
+  return gulp.src([
+    'node_modules/angular-material/angular-material.css',
+  ], { base: '.' })
+    .pipe(order([
+      '**/*.scss',
+    ], { base: './' }))
+    .pipe(sass({ style: 'expanded', zindex: false }))
+    .pipe(autoprefixer('last 2 version'))
+    .pipe(concat('noinc-vendor.css'))
+    .pipe(cssnano())
+    .pipe(rename('noinc-vendor.min.css'))
+    .pipe(gulp.dest(`${webFolder}/stylesheets`))
+});
+
 gulp.task('styles', () => {
     return gulp.src([
         'Resources/src/scss/**/*.scss',
@@ -48,6 +63,7 @@ gulp.task('vendor-scripts', () => {
         'node_modules/angular-animate/angular-animate.js',
         'node_modules/angular-aria/angular-aria.js',
         'node_modules/moment/moment.js',
+        'node_modules/angular-material/angular-material.js',
     ])
     .pipe(order([
         'node_modules/angular/angular.js',
@@ -55,6 +71,7 @@ gulp.task('vendor-scripts', () => {
         'node_modules/angular-animate/angular-animate.js',
         'node_modules/angular-aria/angular-aria.js',
         'node_modules/moment/moment.js',
+        'node_modules/angular-material/angular-material.js',
     ], { base: './' }))
     .pipe(concat('noinc-vendor.js'))
     .pipe(uglify({mangle:false}))
@@ -117,7 +134,7 @@ gulp.task('clean', () => {
 
 // Default task
 gulp.task('default', ['clean'], () => {
-    gulp.start('styles', 'scripts', 'vendor-scripts', 'fonts', 'images', 'views');
+  gulp.start('vendor-styles', 'styles', 'scripts', 'vendor-scripts', 'fonts', 'images', 'views');
 });
 
 // Watch
