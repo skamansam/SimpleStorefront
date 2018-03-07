@@ -40,7 +40,8 @@
 		"twig/twig" : "1.x-dev#460712d",
 		"aws/aws-sdk-php-symfony" : "1.2.0",
 		"api-platform/api-platform" : "2.1.0",
-		"api-platform/schema-generator" : "2.0.0"
+    "api-platform/schema-generator" : "2.0.0",
+    "lexik/jwt-authentication-bundle": "^2.4"
 	},
 	"scripts" : {
 		"build-frontend" : "bash scripts/build_frontend.sh",

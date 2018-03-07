@@ -22,7 +22,8 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
-
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            
             new NoIncSimpleStorefrontApiBundle(),
             new NoIncSimpleStorefrontViewBundle(),
         ];
