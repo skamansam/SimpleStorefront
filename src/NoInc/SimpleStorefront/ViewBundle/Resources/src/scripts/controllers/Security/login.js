@@ -1,3 +1,4 @@
+
 app.controller('loginController', ($scope, $http) => {
     $scope.user = {
         username: null,
