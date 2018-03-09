@@ -131,7 +131,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  	".git/",
  	".vagrant/",
  	"var/cache/",
- 	"vendor/"
+     "vendor/",
+     "src/NoInc/SimpleStorefront/ViewBundle/node_modules"
   ]
 
   #AWS Credentials
