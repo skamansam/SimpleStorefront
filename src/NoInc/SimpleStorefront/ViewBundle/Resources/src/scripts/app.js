@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 const app = angular.module('noincSimpleStorefront', ['ui.router', 'ngMaterial'])
-    .config(($mdThemingProvider) => {
+    .config(($mdThemingProvider, $interpolateProvider) => {
         $mdThemingProvider.theme('default')
             .primaryPalette('purple', {
                 default: '400',
@@ -11,4 +11,7 @@ const app = angular.module('noincSimpleStorefront', ['ui.router', 'ngMaterial'])
             .accentPalette('red', {
                 default: 'A700', // use shade 200 for default, and keep all other shades the same
             });
+
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
     });
