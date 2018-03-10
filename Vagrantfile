@@ -101,12 +101,14 @@ cat ~/.aws/credentials | grep 'aws' >> ~/.aws/config
 
 echo "generating keys for JWT"
 mkdir -p /home/vagrant/SimpleStorefront/var/jwt
+mkdir -p /home/vagrant/SimpleStorefront/var/sessions
 openssl genpkey -algorithm RSA -out /home/vagrant/SimpleStorefront/var/jwt/private_key.pem -pkeyopt rsa_keygen_bits:2048
 openssl rsa -pubout -in /home/vagrant/SimpleStorefront/var/jwt/private_key.pem -out /home/vagrant/SimpleStorefront/var/jwt/public_key.pem
 
 echo "setting permissions"
 chmod u+x /home/vagrant/SimpleStorefront/bin/*
 chmod u+x /home/vagrant/SimpleStorefront/scripts/*
+
 
 SCRIPT
 
