@@ -79,6 +79,7 @@ gulp.task('eslint', () =>{
 gulp.task('vendor-scripts', () => {
     return gulp.src([
         'node_modules/angular/angular.js',
+        'node_modules/angular-cookies/angular-cookies.js',
         'node_modules/@uirouter/angularjs/release/angular-ui-router.js',
         'node_modules/angular-animate/angular-animate.js',
         'node_modules/angular-aria/angular-aria.js',
@@ -87,6 +88,7 @@ gulp.task('vendor-scripts', () => {
     ])
     .pipe(order([
         'node_modules/angular/angular.js',
+        'node_modules/angular-cookies/angular-cookies.js',
         'node_modules/@uirouter/angularjs/release/angular-ui-router.js',
         'node_modules/angular-animate/angular-animate.js',
         'node_modules/angular-aria/angular-aria.js',

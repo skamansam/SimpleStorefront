@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-const app = angular.module('noincSimpleStorefront', ['ui.router', 'ngMaterial'])
+const app = angular.module('noincSimpleStorefront', ['ui.router', 'ngMaterial', 'ngCookies'])
     .config(($mdThemingProvider, $interpolateProvider) => {
         $mdThemingProvider.theme('default')
             .primaryPalette('purple', {

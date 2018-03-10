@@ -4,6 +4,13 @@ app.config(($stateProvider, $locationProvider) => {
     // * * *
 
     // These pages are handled by overriding templates in FOSUserBundle
+    const loginPane = {
+        name: 'login',
+        url: '/login',
+        templateUrl: '/login_pane.html',
+        controller: 'loginController',
+        data: { pageTitle: 'Login' },
+    };
 
     // * * *
     // End Auth pages
@@ -36,6 +43,7 @@ app.config(($stateProvider, $locationProvider) => {
     // * * *
 
     // Dashboard home
+    $stateProvider.state(loginPane);
     $stateProvider.state(allRecipes);
 
     // General rules and setup.
