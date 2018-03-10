@@ -1,0 +1,20 @@
+md-content.login-pane(ng-controller="loginController",layout="row",  layout-align="space-around", layout-padding, ng-cloak)
+    md-card(flex="flex" flex-gt-sm="50" flex-gt-md="33")
+        md-toolbar
+            .md-toolbar-tools
+                h2
+                    span  Please login to access the system.
+        md-card-content
+            ng-form(name="loginForm")
+                md-input-container.md-block
+                    label(for="username") Username
+                    input(id="username", required, name="_username", type="username", ng-model="user.username")
+                    div(ng-messages="Form.email.$error" role="alert" multiple="")
+                        .my-message(ng-message="required") Please enter your login.
+                md-input-container.md-block
+                    label(for="password") Password
+                    input(id="password", required, name="_password", type="password", ng-model="user.password")
+                    div(ng-messages="Form.password.$error" role="alert" multiple="")
+                        .my-message(ng-message="required") Please enter your password.
+                        .my-message(ng-message="md-maxlength") Too long.
+                md-button.md-raised.md-primary(type="submit", ng-disabled="!loginForm.$valid", ng-click="login()") Login

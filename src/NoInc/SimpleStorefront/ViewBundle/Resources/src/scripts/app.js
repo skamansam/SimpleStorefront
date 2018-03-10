@@ -10,8 +10,5 @@ const app = angular.module('noincSimpleStorefront', ['ui.router', 'ngMaterial'])
             })
             .accentPalette('red', {
                 default: 'A700', // use shade 200 for default, and keep all other shades the same
-                'hue-1': '500', // use shade A200 for the <code>md-hue-1</code> class
-                'hue-2': '800', // use shade 600 for the <code>md-hue-2</code> class
-                'hue-3': '300', // use shade A100 for the <code>md-hue-3</code> class
             });
     });

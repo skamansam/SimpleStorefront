@@ -1,22 +1,5 @@
 extends ../partials/base.pug
 
 block content 
-    md-toolbar(md-scroll-shrink ng-if="true")
-        .md-toolbar-tools
-          h3
-            span Simple Shop
-
-    md-content.page-container
-
-        md-card.login-form.page(ng-controller="loginController")
-            
-            h1 Please login to access the system.
-
-            ng-form(name="loginForm")
-                label(for="username") Username
-                input(id="username", required, name="_username", type="username", ng-model="user.username")
-                
-                label(for="password") Password
-                input(id="password", required, name="_password", type="password", ng-model="user.password")
-                    
-                button(type="submit", ng-disabled="!loginForm.$valid", ng-click="login()") Login
+    include ../partials/toolbar.pug
+    include ./login-pane.pug

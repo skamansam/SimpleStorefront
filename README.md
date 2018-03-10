@@ -123,3 +123,6 @@ The following is a list of tasks that should be completed. They are in three lev
 * Create tests for various components of the system
 * Investigate adding in JWT for authentication
 
+# NOTES
+
+* The angular material theme was selected [here](https://material.io/color/#!/?view.left=0&view.right=0&secondary.color=D50000&primary.color=AB47BC).
