@@ -124,7 +124,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-    vb.customize ["modifyvm", :id, "--cpus", 4]
+    vb.customize ["modifyvm", :id, "--cpus", 2]
   end
 
   config.vm.synced_folder ".", "/home/vagrant/#{php_app}", type: "rsync", rsync__auto: true, rsync__exclude: [
@@ -142,6 +142,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #SSH Credentials
   config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/id_rsa.pub"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080, protocol: "tcp"
 
   config.vm.provision "shell", inline: script, args: php_app
 
