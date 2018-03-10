@@ -56,6 +56,26 @@ gulp.task('styles', () => {
     .pipe(gulp.dest(`${webFolder}/stylesheets`))
 });
 
+gulp.task('eslint', () =>{
+    return gulp.src(['Resources/src/scripts/**/*.js'])
+        .pipe(order([
+            'Resources/src/scripts/app.js',
+            'Resources/src/scripts/states.js',
+            'Resources/src/scripts/factories/**/*.js',
+            'Resources/src/scripts/controllers/**/*.js',
+        ]))
+        .pipe(eslint({ configFile: '.eslintrc' }))
+        // Output a message in the console when checking style
+        .on('data', (d) => gutil.log(`JS Checking Style: ${String(d.history[0]).replace('/home/vagrant/SimpleStoreFront/src/NoInc/SimpleStorefront/ViewBundle/Resources/src/scripts/', '')}`))
+        .pipe(eslint.format())
+        .pipe(isDevelop() ? gutil.noop() : eslint.failAfterError())
+        .on('finish', () =>
+            isDevelop()
+                ? gutil.log('WARNING JS Checkstyle ran in develop mode. Please check for errors as they will fail on production builds.')
+                : gutil.log('JS Checkstyle passed! Thanks :)'))
+    
+});
+
 gulp.task('vendor-scripts', () => {
     return gulp.src([
         'node_modules/angular/angular.js',
@@ -87,15 +107,6 @@ gulp.task('scripts', () => {
         'Resources/src/scripts/factories/**/*.js',
         'Resources/src/scripts/controllers/**/*.js',
     ]))
-    .pipe(eslint({ configFile: '.eslintrc'}))
-    // Output a message in the console when checking style
-    .on('data', (d) => gutil.log(`JS Checking Style: ${String(d.history[0]).replace('/home/vagrant/SimpleStoreFront/src/NoInc/SimpleStorefront/ViewBundle/Resources/src/scripts/', '')}`))
-    .pipe(eslint.format())
-    .pipe(isDevelop() ? gutil.noop() :  eslint.failAfterError())
-    .on('finish', () =>
-        isDevelop()
-        ? gutil.log('WARNING JS Checkstyle ran in develop mode. Please check for errors as they will fail on production builds.')
-        : gutil.log('JS Checkstyle passed! Thanks :)'))
     .pipe(babel({
         presets: ['es2015'],
         plugins: ['transform-object-rest-spread']
@@ -133,7 +144,7 @@ gulp.task('clean', () => {
 });
 
 // Default task
-gulp.task('default', ['clean'], () => {
+gulp.task('default', ['clean', 'eslint'], () => {
   gulp.start('vendor-styles', 'styles', 'scripts', 'vendor-scripts', 'fonts', 'images', 'views');
 });
 
