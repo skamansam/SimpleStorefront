@@ -10,13 +10,14 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
             _password: $scope.user.password.trim(),
         }).then((response) => {
             console.log(response);
-            $http.post('/api/login_check', {
-                _username: $scope.user.username.toLowerCase().trim(),
-                _password: $scope.user.password.trim(),
-            }).then((response2) => {
-                userProvider.setToken(response2.data.token);
-                $state.go('allRecipes');
-            });
+            $state.go('allRecipes');
+            // $http.post('/api/login_check', {
+            //     _username: $scope.user.username.toLowerCase().trim(),
+            //     _password: $scope.user.password.trim(),
+            // }).then((response2) => {
+            //     userProvider.setToken(response2.data.token);
+            //     $state.go('allRecipes');
+            // });
         });
     };
 });
