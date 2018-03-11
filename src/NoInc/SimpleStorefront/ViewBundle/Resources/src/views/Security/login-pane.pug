@@ -3,6 +3,7 @@ md-content.login-pane(ng-controller="loginController",layout="row",  layout-alig
         md-toolbar
             .md-toolbar-tools
                 h2
+                    md-icon.lock(md-font-icon="lock") lock
                     span  Please login to access the system.
         md-card-content
             ng-form(name="loginForm")
@@ -16,4 +17,6 @@ md-content.login-pane(ng-controller="loginController",layout="row",  layout-alig
                     input(id="password", required, name="_password", type="password", ng-model="user.password")
                     div(ng-messages="Form.password.$error" role="alert" multiple="")
                         .my-message(ng-message="required") Please enter your password.
-                md-button.md-raised.md-primary(type="submit", ng-click="login()", ng-disabled="!loginForm.$valid") Login
+                md-button.md-raised.md-primary(type="submit", ng-click="login()", ng-disabled="!loginForm.$valid")
+                    md-icon.lock_open(md-font-icon="lock_open") lock_open
+                    span Login

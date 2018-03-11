@@ -1,5 +1,10 @@
 md-toolbar(md-scroll-shrink ng-if="true")
     .md-toolbar-tools
-        h3
-            md-icon(md-font-icon="local_cafe")
+        h1(flex)
+            md-icon.local_cafe(aria-label="coffee cup icon") local_cafe
             span Simple Shop
+        | {% if app.user %}
+        |    {{ app.user.name }}
+        | {% else %}
+        a(ui-sref="login") Login
+        | {% endif %}

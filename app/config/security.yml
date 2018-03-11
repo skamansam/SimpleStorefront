@@ -37,13 +37,13 @@ security:
             anonymous: true
 
     access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/logout$, role: ROLE_USER }
         - { path: ^/app/, role: ROLE_USER }
+        - { path: ^/api/user$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/api/, role: ROLE_USER }
         - { path: ^/api/, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/user$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
             

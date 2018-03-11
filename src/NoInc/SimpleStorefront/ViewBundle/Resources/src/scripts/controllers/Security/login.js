@@ -5,12 +5,18 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
         password: null,
     };
     $scope.login = () => {
-        $http.post('/api/login_check', {
+        $http.post('/login', {
             _username: $scope.user.username.toLowerCase().trim(),
             _password: $scope.user.password.trim(),
         }).then((response) => {
-            userProvider.setToken(response.data.token);
-            $state.go('allRecipes');
+            console.log(response);
+            $http.post('/api/login_check', {
+                _username: $scope.user.username.toLowerCase().trim(),
+                _password: $scope.user.password.trim(),
+            }).then((response2) => {
+                userProvider.setToken(response2.data.token);
+                $state.go('allRecipes');
+            });
         });
     };
 });
