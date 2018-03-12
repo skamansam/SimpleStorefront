@@ -1,7 +1,9 @@
-md-toolbar(md-scroll-shrink ng-if="true")
+md-toolbar.md-toolbar-tools(ng-if="true", layout="row", ng-controller="toolbarController")
     .md-toolbar-tools
+        md-button.menu.md-icon-button(hide-gt-sm, aria-label="close or open menu", ng-click="toggleSideNav()")
+            md-icon.menu(aria-label="menu icon") menu
+        md-icon.local_cafe(aria-label="coffee cup icon") local_cafe
         h1(flex)
-            md-icon.local_cafe(aria-label="coffee cup icon") local_cafe
             span Simple Shop
         | {% if app.user %}
         |    {{ app.user.name }}

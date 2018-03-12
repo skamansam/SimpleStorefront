@@ -14,13 +14,18 @@ html(lang="en")
             link(rel="stylesheet", href="/stylesheets/noinc.min.css")
             link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
             
-    body(ng-app="noincSimpleStorefront", ng-cloak)
-        include ../partials/toolbar.pug
+    body(ng-app="noincSimpleStorefront", ng-cloak, layout="row")
+            section(layout="column", flex)
+                include ../partials/toolbar.pug
 
-        // All angular-defined views will be placed in the ui-view
-        ui-view
-        
-        // For non-angularized pages (i.e. the login page), extend this template
-        // and put content in this named block.
-        block content
-            
+                md-content(layout="row", ng-controller="sideNavController")
+                    include ../partials/sidenav.pug
+                
+                    md-content#content(flex, layout-padding)
+                        // All angular-defined views will be placed in the ui-view
+                        ui-view
+                        
+                        // For non-angularized pages (i.e. the login page), extend this template
+                        // and put content in this named block.
+                        block content
+                

@@ -1,5 +1,5 @@
 
-app.controller('loginController', ($scope, $http, $state, userProvider) => {
+app.controller('loginController', ($scope, $http, $state) => {
     $scope.user = {
         username: null,
         password: null,
