@@ -18,7 +18,7 @@ html(lang="en")
             section(layout="column", flex)
                 include ../partials/toolbar.pug
 
-                md-content(layout="row", ng-controller="sideNavController")
+                md-content(layout="row", flex, ng-controller="sideNavController")
                     include ../partials/sidenav.pug
                 
                     md-content#content(flex, layout-padding)

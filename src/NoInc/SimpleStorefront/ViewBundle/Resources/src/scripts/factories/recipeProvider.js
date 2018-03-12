@@ -1,10 +1,12 @@
 app.factory('recipeProvider', ($http) => {
-    // eslint-disable-next-line arrow-body-style
-    const getRecipes = () => {
-        return $http.get('/api/recipes').then(response => response.data);
-    };
+    const getRecipes = () =>
+        $http.get('/api/recipes').then(response => response.data);
+
+    const getRecipeCount = () =>
+        $http.get('/api/recipes?count_only=true').then(response => response.data);
 
     return {
         getRecipes,
+        getRecipeCount,
     };
 });

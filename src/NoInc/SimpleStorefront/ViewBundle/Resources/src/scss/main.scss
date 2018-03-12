@@ -3,10 +3,9 @@ $secondary-color: rgb(251, 222, 75); // #FC7D3C
 $transition: cubic-bezier(.25, .8, .25, 1);
 // Any extra typefaces you want to include should be included
 // in seperate files that define the faces
-
 // Import helper classes
 @import "login";
-
+@import "sidenav";
 // Import helper classes
 @import "mixins";
 // Major page sections
