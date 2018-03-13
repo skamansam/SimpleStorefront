@@ -5,8 +5,10 @@ types:
     constants:
       MEASURE_CUP: Cup
       MEASURE_EACH: Each
+      MEASURE_TSP: Teaspoon
+      MEASURE_TBSP: Tablespoon
     properties:
-###### Start Custom Fields 
+###### Start Custom Fields
       name:
         range: Text
         ormColumn: type="string", length=180, nullable=false
@@ -39,4 +41,4 @@ types:
         groups:
         - get_ingredient
         - set_ingredient
-###### End Custom Fields 
+###### End Custom Fields
