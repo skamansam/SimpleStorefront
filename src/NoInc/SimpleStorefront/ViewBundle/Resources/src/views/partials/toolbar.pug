@@ -2,11 +2,6 @@ md-toolbar.md-toolbar-tools(ng-if="true", layout="row", ng-controller="toolbarCo
     .md-toolbar-tools
         md-button.menu.md-icon-button(hide-gt-sm, aria-label="close or open menu", ng-click="toggleSideNav()")
             md-icon.menu(aria-label="menu icon") menu
-        md-icon.local_cafe(aria-label="coffee cup icon") local_cafe
         h1(flex)
             span Simple Shop
-        | {% if app.user %}
-        |    {{ app.user.name }}
-        | {% else %}
-        a(ui-sref="login") Login
-        | {% endif %}
+        md-icon.local_cafe(aria-label="coffee cup icon") local_cafe
