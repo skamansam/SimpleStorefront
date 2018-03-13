@@ -21,6 +21,8 @@ class Ingredient
 {
     const MEASURE_CUP = 'Cup';
     const MEASURE_EACH = 'Each';
+    const MEASURE_TSP = 'Teaspoon';
+    const MEASURE_TBSP = 'Tablespoon';
 
     /**
      * @ORM\Id

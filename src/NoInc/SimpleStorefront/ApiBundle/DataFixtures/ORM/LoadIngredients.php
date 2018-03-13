@@ -32,7 +32,43 @@ class LoadIngredients extends AbstractLoadEntity
                 'name' => 'Water',
                 'price' => 0.00,
                 'stock' => 18
-            ]
+            ],
+            [
+                'measure' => Ingredient::MEASURE_CUP,
+                'name' => 'Flour',
+                'price' => 0.40,
+                'stock' => 3
+            ],
+            [
+                'measure' => Ingredient::MEASURE_TSP,
+                'name' => 'Baking Soda',
+                'price' => 0.20,
+                'stock' => 3
+            ],
+            [
+                'measure' => Ingredient::MEASURE_TSP,
+                'name' => 'Baking Powder',
+                'price' => 0.30,
+                'stock' => 9
+            ],
+            [
+                'measure' => Ingredient::MEASURE_CUP,
+                'name' => 'Milk',
+                'price' => 0.20,
+                'stock' => 8
+            ],
+            [
+                'measure' => Ingredient::MEASURE_EACH,
+                'name' => 'Egg',
+                'price' => 0.60,
+                'stock' => 13
+            ],
+            [
+                'measure' => Ingredient::MEASURE_TBSP,
+                'name' => 'Butter',
+                'price' => 0.20,
+                'stock' => 20
+            ],
         ];
     }
 
