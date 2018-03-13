@@ -1,6 +1,6 @@
 md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('gt-md')", md-whiteframe="4")
     md-toolbar
-        h1.md-toolbar-tools [[username || "Guest"]]
+        h1.md-toolbar-tools [[user.name || "Guest"]]
     md-content(layout-padding)
         md-list
             md-subheader.md-no-sticky Explore
@@ -8,23 +8,24 @@ md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('
                 md-icon shopping
                 p
                     a(href, ui-sref="products") Products
-                div.md-secondary [[productCount]]
+                div.md-secondary.md-hue-1 [[productCount]]
             md-list-item(ui-sref-active="primary")
                 md-icon local_dining
                 p
                     a(href, ui-sref="allRecipes") Recipes
-                div.md-secondary [[recipeCount]]
+                div.md-secondary.md-hue-1 [[recipeCount]]
             md-list-item(ui-sref-active="primary")
                 md-icon assignment
                 p
                     a(href, ui-sref="ingredients") Ingredients
-                md-icon.md-secondary [[ingredientCount]]
+                div.md-secondary.md-hue-1 [[ingredientCount]]
             md-divider
 
-            md-subheader.md-no-sticky Create
-            md-list-item(ui-sref-active="primary")
+            md-subheader.md-no-sticky(ng-if="user.roles") Create
+            md-list-item(ui-sref-active="primary", ng-if="user.roles")
                 md-icon local_dining
                 p Product
+                div.md-secondary.md-hue-1 [[productCount]]
             md-list-item(ui-sref-active="primary")
                 md-icon assignment
                 p Ingredient

@@ -1,16 +1,23 @@
 app.factory('userProvider', ($http, $cookies) => {
     // eslint-disable-next-line arrow-body-style
-    const getUser = () => {
-        return $http.get('/current_user').then(response => response.data);
+    const getUser = () => $http.get('/api/user.json').then(response => response.data);
+    const getToken = () => $cookies.get('jwt_token');
+    const setHeaderFromToken = () => {
+        const token = getToken();
+        if (token) {
+            $http.defaults.headers.common.Authorization = `Bearer ${token}`;
+        }
+        return token;
     };
     const setToken = (token) => {
-        $http.defaults.headers.common.Authorization = `Bearer ${token}`;
         $cookies.put('jwt_token', token);
+        setHeaderFromToken();
     };
-    const getToken = () => $cookies.get('jwt_token');
+    // const isLoggedIn = () => getUser().then( (response) => JSON.stringify(response) === '{}');
     return {
         getUser,
         setToken,
         getToken,
+        setHeaderFromToken,
     };
 });
