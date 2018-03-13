@@ -65,7 +65,7 @@ class Ingredient
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"get_ingredient", "set_ingredient"})
+     * @Groups({"get_ingredient", "set_ingredient", "get_recipe"})
      *
      * @var float
      *

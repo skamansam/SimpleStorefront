@@ -41,4 +41,7 @@ types:
         groups:
         - get_ingredient
         - set_ingredient
+        - get_recipe
+        - get_recipe_ingredient
+        - get_product
 ###### End Custom Fields

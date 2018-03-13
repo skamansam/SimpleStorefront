@@ -1,13 +1,40 @@
 div
     h1 All Recipes
 
-    div(class="recipe-container" ng-repeat="recipe in recipes")
-        h2 [[recipe.name]]
-        p Price: $[[recipe.price]]
-        h3 Ingredients
-        ul
-            li(ng-repeat="item in recipe.recipeIngredients")
-                p [[item.ingredient.name]]
-                p Price: $[[item.ingredient.price]]
-                p Quantity: [[item.quantity]]
-                p In Stock: [[item.ingredient.stock + ' ' + item.ingredient.measure]]
+    //- div(class="recipe-container" ng-repeat="recipe in recipes")
+        //- h2 [[recipe.name]]
+        //- p Price: $[[recipe.price]]
+        //- h3 Ingredients
+        //- ul
+        //-     li(ng-repeat="item in recipe.recipeIngredients")
+        //-         p [[item.ingredient.name]]
+        //-         p Price: $[[item.ingredient.price]]
+        //-         p Quantity: [[item.quantity]]
+        //-         p In Stock: [[item.ingredient.stock + ' ' + item.ingredient.measure]]
+
+    md-card(ng-repeat="recipe in recipes")
+        //- md-card-header
+        //-     md-card-avatar
+        //-         img class="md-user-avatar" src="img/100-2.jpeg"/>
+        //-     md-card-header-text
+        //-         span.md-title [[recipe.name]]
+        //-         span.md-subhead Price: $[[recipe.price]]
+        img.md-card-image(ng-src="[[recipe.imagePath]]", alt="Image of recipe")
+        md-card-title
+            md-card-title-text
+                span.md-headline [[recipe.name]]
+                span.md-subhead Price: $[[recipe.price]]
+            md-card-actions(layout="row", layout-align="start center")
+                md-button(ng-click="purchase()", ng-enabled="canPurchase") Purchase This Item!
+                md-button(ng-click="make()", ng-enabled="canMake") Make This Item!
+                md-card-icon-actions
+                    md-button.md-icon-button(aria-label="toggle", ng-click="toggleIngredients()")
+                        md-icon(ng-show="ingredientsVisible") arrow_drop_down
+                        md-icon(ng-show="!ingredientsVisible") arrow_drop_up
+        md-card-content
+            md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients")
+                //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
+                .md-list-item-text(layout="column")
+                    h3 [[item.quantity + ' ' + item.ingredient.measure]] [[ item.ingredient.name ]]
+                    h4 $[[item.ingredient.price]]
+                    p [[item.ingredient.stock || 0]] [[item.ingredient.measure]] left in stock
