@@ -1,24 +1,12 @@
 div
     h1 All Recipes
 
-    //- div(class="recipe-container" ng-repeat="recipe in recipes")
-        //- h2 [[recipe.name]]
-        //- p Price: $[[recipe.price]]
-        //- h3 Ingredients
-        //- ul
-        //-     li(ng-repeat="item in recipe.recipeIngredients")
-        //-         p [[item.ingredient.name]]
-        //-         p Price: $[[item.ingredient.price]]
-        //-         p Quantity: [[item.quantity]]
-        //-         p In Stock: [[item.ingredient.stock + ' ' + item.ingredient.measure]]
-
-    md-card(ng-repeat="recipe in recipes")
-        //- md-card-header
-        //-     md-card-avatar
-        //-         img class="md-user-avatar" src="img/100-2.jpeg"/>
-        //-     md-card-header-text
-        //-         span.md-title [[recipe.name]]
-        //-         span.md-subhead Price: $[[recipe.price]]
+    md-content(layout="row")
+        md-button.md-icon-button
+            md-icon search
+        md-input-container(flex)
+          input(ng-model="query['name']")
+    md-card(ng-repeat="recipe in recipes | filter:query")
         img.md-card-image(ng-src="[[recipe.imagePath]]", alt="Image of recipe")
         md-card-title
             md-card-title-text
