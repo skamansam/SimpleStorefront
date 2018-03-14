@@ -35,6 +35,6 @@ div
             md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients")
                 //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
                 .md-list-item-text(layout="column")
-                    h3 [[item.quantity + ' ' + item.ingredient.measure]] [[ item.ingredient.name ]]
+                    h3 [[item.ingredientString ]]
                     h4 $[[item.ingredient.price]]
                     p [[item.ingredient.stock || 0]] [[item.ingredient.measure]] left in stock

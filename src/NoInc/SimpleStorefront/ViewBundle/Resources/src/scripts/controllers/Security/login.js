@@ -20,7 +20,7 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
             });
         });
     };
-    if(userProvider.getToken()){
+    if (userProvider.getToken()) {
         $state.go('app/recipes');
     }
 });

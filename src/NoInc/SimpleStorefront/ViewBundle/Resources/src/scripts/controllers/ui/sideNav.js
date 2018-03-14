@@ -1,4 +1,4 @@
-app.controller('sideNavController', ($scope, $mdSidenav, $timeout, countsProvider, userProvider) => {
+app.controller('sideNavController', ($scope, $state, $mdSidenav, $timeout, countsProvider, userProvider) => {
     $scope.recipeCount = 0;
     $scope.ingredientCount = 0;
     $scope.userCount = 0;
@@ -20,7 +20,6 @@ app.controller('sideNavController', ($scope, $mdSidenav, $timeout, countsProvide
      */
     $scope.getCounts = () => {
         countsProvider.getCounts().then((response) => {
-            console.log(response);
             $scope.ingredientCount = response.ingredients || 0;
             $scope.recipesCount = response.recipes || 0;
             $scope.productCount = response.products || 0;
@@ -35,11 +34,11 @@ app.controller('sideNavController', ($scope, $mdSidenav, $timeout, countsProvide
             $scope.user = response;
             return $scope.user;
         });
-    $scope.logout = () =>{
+    $scope.logout = () => {
         userProvider.deleteCookie();
         $scope.$broadcast('userChanged');
         $state.go('login');
-    }
+    };
     userProvider.setHeaderFromToken();
     $scope.getUser();
     $scope.getCounts();

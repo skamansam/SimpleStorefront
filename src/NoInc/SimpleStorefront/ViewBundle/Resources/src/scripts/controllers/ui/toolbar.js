@@ -6,7 +6,6 @@ app.controller('toolbarController', ($scope, $mdSidenav) => {
         $mdSidenav('left').open();
     };
     $scope.toggleSideNav = () => {
-        console.info('toggle nav');
         $mdSidenav('left').toggle();
     };
 });
