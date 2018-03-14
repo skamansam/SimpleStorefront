@@ -25,6 +25,14 @@ class LoadUsers extends AbstractLoadEntity
                 'email' => 'admin@noinc.com',
                 'currentCapital' => 100,
                 'setRoles' => [ User::ROLE_SUPER_ADMIN, User::ROLE_DEFAULT ]
+            ],
+            [
+                'username' => 'sam',
+                'plainPassword' => 'password',
+                'enabled' => true,
+                'email' => 'skamansam@gmail.com',
+                'currentCapital' => 100,
+                'setRoles' => [ 'ROLE_USER', 'ROLE_API' ]
             ]
         ];
     }
