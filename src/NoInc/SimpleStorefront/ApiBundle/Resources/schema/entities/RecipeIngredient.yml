@@ -3,7 +3,7 @@ types:
     parent: false
     resourceEnabled: true
     properties:
-###### Start Custom Fields 
+###### Start Custom Fields
       quantity:
         range: Float
         groups:
@@ -21,4 +21,9 @@ types:
         - get_recipe
         - set_recipe
         - get_product
-###### End Custom Fields 
+      ingredient_string:
+        range: Ingredient
+        cardinality: (*..1)
+        groups:
+        - get_recipe
+###### End Custom Fields
