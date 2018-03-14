@@ -21,9 +21,4 @@ types:
         - get_recipe
         - set_recipe
         - get_product
-      ingredient_string:
-        range: Ingredient
-        cardinality: (*..1)
-        groups:
-        - get_recipe
 ###### End Custom Fields

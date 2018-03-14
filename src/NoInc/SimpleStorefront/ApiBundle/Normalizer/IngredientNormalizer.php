@@ -36,11 +36,11 @@ class IngredientNormalizer implements EncoderInterface, DecoderInterface
 
     public function supportsEncoding($format)
     {
-        return true;
+        return $format == 'json';
     }
     public function supportsDecoding($format)
     {
-        return true;
+        return $format == 'json';
     }
 
 }
