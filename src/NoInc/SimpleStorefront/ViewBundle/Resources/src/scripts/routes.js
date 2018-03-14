@@ -33,6 +33,14 @@ app.config(($stateProvider, $locationProvider) => {
         data: { pageTitle: 'All Recipes' },
     };
 
+    const allIngredients = {
+        name: 'ingredients',
+        url: '/app/ingredients',
+        templateUrl: '/ingredients/ingredients.html',
+        controller: 'ingredientsController',
+        data: { pageTitle: 'All Ingredients' },
+    };
+
     // * * *
     // End Dashboard pages
     // * * *
@@ -45,6 +53,7 @@ app.config(($stateProvider, $locationProvider) => {
     // Dashboard home
     $stateProvider.state(loginPane);
     $stateProvider.state(allRecipes);
+    $stateProvider.state(allIngredients);
 
     // General rules and setup.
     $locationProvider.html5Mode({

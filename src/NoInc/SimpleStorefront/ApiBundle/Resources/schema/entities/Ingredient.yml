@@ -44,11 +44,4 @@ types:
         - get_recipe
         - get_recipe_ingredient
         - get_product
-      ingredientString:
-        range: Text
-        groups:
-        - set_ingredient
-        - get_recipe
-        - get_recipe_ingredient
-        - get_product
 ###### End Custom Fields

@@ -1,0 +1,15 @@
+div(ng-controller="ingredientsController")
+    h1 All Ingredients
+
+    md-content(layout="row")
+        md-button.md-icon-button
+            md-icon search
+        md-input-container(flex)
+          input(ng-model="query['name']")
+        //- input(ng-model="query['name']")
+    md-list-item.md-3-line(ng-repeat="item in ingredients | filter:query")
+        //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
+        .md-list-item-text(layout="column")
+            h3 [[item.name ]]
+            h4 $[[item.price]]
+            p [[item.stock || 0]] [[item.measure]] left in stock

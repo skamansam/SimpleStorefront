@@ -35,6 +35,13 @@ no_inc_simplestorefront_view_bundle_html_all_recipes:
         _controller: 'FrameworkBundle:Template:template'
         template: '@NoIncSimpleStorefrontViewBundle/recipes/allRecipes.html.twig'
 
+# Ingredients
+no_inc_simplestorefront_view_bundle_html_ingredients:
+    path: /ingredients/ingredients.html
+    defaults:
+        _controller: 'FrameworkBundle:Template:template'
+        template: '@NoIncSimpleStorefrontViewBundle/ingredients/ingredients.html.twig'
+
 # This catch all route allows deep linking into the angular app without
 # Symfony generating 404 errors. All ui-router links in the app must be
 # prefixed with /app/ for this to work :)
