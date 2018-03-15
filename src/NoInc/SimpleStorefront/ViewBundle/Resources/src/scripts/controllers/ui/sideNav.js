@@ -30,15 +30,14 @@ app.controller('sideNavController', ($scope, $state, $mdSidenav, $timeout, count
 
     $scope.getUser = () =>
         userProvider.getUser().then((response) => {
-            console.log(response);
             $scope.user = response;
             return $scope.user;
         });
+
     $scope.logout = () => {
-        userProvider.deleteCookie();
-        $scope.$broadcast('userChanged');
-        $state.go('login');
+        userProvider.logout().then(() => $state.go('login'));
     };
+
     userProvider.setHeaderFromToken();
     $scope.getUser();
     $scope.getCounts();
