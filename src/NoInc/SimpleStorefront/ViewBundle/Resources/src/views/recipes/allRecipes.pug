@@ -5,7 +5,8 @@ div
         md-button.md-icon-button
             md-icon search
         md-input-container(flex)
-          input(ng-model="query['name']")
+          input(ng-model="query['name']", placeholder="Search for Recipe Name")
+
     md-card(ng-repeat="recipe in recipes | filter:query")
         img.md-card-image(ng-src="[[recipe.imagePath]]", alt="Image of recipe")
         md-card-title
@@ -20,7 +21,7 @@ div
                         md-icon(ng-show="ingredientsVisible") arrow_drop_down
                         md-icon(ng-show="!ingredientsVisible") arrow_drop_up
         md-card-content
-            md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients")
+            md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients"  ng-class="{'md-warn': item.ingredient.stock < 1}")
                 //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
                 .md-list-item-text(layout="column")
                     h3 [[item.ingredientString ]]
