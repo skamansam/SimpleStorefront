@@ -15,6 +15,7 @@ class LoadLemonadeRecipe extends Fixture
         $recipe = new Recipe();
         $recipe->setName('Lemonade');
         $recipe->setPrice(1.00);
+        $recipe->setImage('/images/lemonade.jpg');
 
         $recipeIngredients = [
             [

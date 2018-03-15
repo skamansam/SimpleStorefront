@@ -3,7 +3,7 @@ types:
     parent: false
     resourceEnabled: true
     properties:
-###### Start Custom Fields 
+###### Start Custom Fields
       name:
         range: Text
         ormColumn: type="string", length=180, nullable=false
@@ -16,6 +16,13 @@ types:
         - get_recipe
         - set_recipe
         - get_product
+      image:
+        range: Text
+        ormColumn: nullable=true
+        groups:
+        - get_recipe
+        - set_recipe
+        - get_product
       recipeIngredient:
         range: RecipeIngredient
         cardinality: (0..*)
@@ -23,4 +30,4 @@ types:
         - get_recipe
         - set_recipe
         - get_product
-###### End Custom Fields 
+###### End Custom Fields

@@ -15,6 +15,7 @@ class LoadPancakeRecipe extends Fixture
         $recipe = new Recipe();
         $recipe->setName('Pancake');
         $recipe->setPrice(3.00);
+        $recipe->setImage('/images/pancakes.jpg');
 
         $recipeIngredients = [
             [
