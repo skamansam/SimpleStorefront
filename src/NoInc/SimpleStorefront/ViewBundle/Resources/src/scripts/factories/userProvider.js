@@ -1,7 +1,7 @@
 app.factory('userProvider', ($http, $cookies) => {
-    // eslint-disable-next-line arrow-body-style
     const getUser = () => $http.get('/api/user.json').then(response => response.data);
     const getToken = () => $cookies.get('jwt_token');
+
     const setHeaderFromToken = () => {
         const token = getToken();
         if (token) {
@@ -13,7 +13,7 @@ app.factory('userProvider', ($http, $cookies) => {
         $cookies.put('jwt_token', token);
         setHeaderFromToken();
     };
-    // const isLoggedIn = () => getUser().then( (response) => JSON.stringify(response) === '{}');
+
     return {
         getUser,
         setToken,

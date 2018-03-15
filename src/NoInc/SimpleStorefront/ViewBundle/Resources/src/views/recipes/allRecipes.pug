@@ -8,19 +8,19 @@ div
           input(ng-model="query['name']", placeholder="Search for Recipe Name")
 
     md-card(ng-repeat="recipe in recipes | filter:query")
-        img.md-card-image(ng-src="[[recipe.imagePath]]", alt="Image of recipe")
+        img.md-card-image(ng-src="[[recipe.image]]", alt="Image of recipe")
         md-card-title
             md-card-title-text
                 span.md-headline [[recipe.name]]
                 span.md-subhead Price: $[[recipe.price]]
             md-card-actions(layout="row", layout-align="start center")
                 md-button(ng-click="purchase()", ng-enabled="canPurchase") Purchase This Item!
-                md-button(ng-click="make()", ng-enabled="canMake") Make This Item!
+                md-button(ng-click="make()", ng-enabled="canMake(recipe)", ng-if="isAdminUser") Make This Item!
                 md-card-icon-actions
                     md-button.md-icon-button(aria-label="toggle", ng-click="toggleIngredients()")
-                        md-icon(ng-show="ingredientsVisible") arrow_drop_down
-                        md-icon(ng-show="!ingredientsVisible") arrow_drop_up
-        md-card-content
+                        md-icon(ng-show="ingredientsVisible", on-click="toggleIngredients()") arrow_drop_down
+                        md-icon(ng-show="!ingredientsVisible", on-click="toggleIngredients()") arrow_drop_up
+        md-card-content(ng-show="ingredientsVisible && isAdminUser")
             md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients"  ng-class="{'md-warn': item.ingredient.stock < 1}")
                 //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
                 .md-list-item-text(layout="column")
