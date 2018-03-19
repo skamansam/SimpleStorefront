@@ -1,1 +1,4 @@
 services:
+    'NoInc\SimpleStorefront\ApiBundle\Normalizer\RecipeNormalizer':
+        decorates: 'api_platform.jsonld.normalizer.item'
+        arguments: [ '@NoInc\SimpleStorefront\ApiBundle\Normalizer\RecipeNormalizer.inner' ]
