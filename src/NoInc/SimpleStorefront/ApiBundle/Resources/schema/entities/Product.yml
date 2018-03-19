@@ -3,10 +3,10 @@ types:
     parent: false
     resourceEnabled: true
     attributes:
-      filters: 
+      filters:
       - 'product.recipe_filter'
     properties:
-###### Start Custom Fields 
+###### Start Custom Fields
       createdAt:
         range: DateTime
         cardinality: (0..1)
@@ -19,4 +19,10 @@ types:
         groups:
         - get_product
         - set_product
-###### End Custom Fields 
+      quantity:
+        range: Number
+        cardinality: (0..1)
+        groups:
+        - get_product
+        - set_product
+###### End Custom Fields

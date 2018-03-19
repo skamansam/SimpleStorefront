@@ -6,6 +6,28 @@ use NoInc\SimpleStorefront\ApiBundle\Entity\Product;
 
 class ProductListener
 {
+    public function preUpdate(PreUpdateEventArgs $eventArgs)
+    {
+        if($eventArgs->hasChangedField('quantity')) {
+            $product = $eventArgs->getEntity();
+            $oldQty = $eventArgs->getOldValue('quantity');
+            $newQty = $eventArgs->getNewValue('quantity');
+            $itemsUsed = $newQty - $oldQty;
+            if($newQty < 0) {
+                throw new Exception('There are no products in stock.');
+            }
+            if($newQty < $oldQty){
+                return; // we are selling an item, so no need to check stock
+            }
+            foreach ($product->$recipe->getRecipeIngredients() as $recipeIngredient) {
+                $ingredient = $recipeIngredient->getIngredient();
+                if($ingredient->getStock() < 1) {
+                    throw new Exception('Not enough ingredients');
+                }
+            }
+        }
+    }
+
 
     public function prePersist(LifecycleEventArgs $args)
     {
