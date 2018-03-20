@@ -73,7 +73,7 @@ gulp.task('eslint', () =>{
             isDevelop()
                 ? gutil.log('WARNING JS Checkstyle ran in develop mode. Please check for errors as they will fail on production builds.')
                 : gutil.log('JS Checkstyle passed! Thanks :)'))
-    
+
 });
 
 gulp.task('vendor-scripts', () => {
@@ -85,6 +85,7 @@ gulp.task('vendor-scripts', () => {
         'node_modules/angular-aria/angular-aria.js',
         'node_modules/moment/moment.js',
         'node_modules/angular-material/angular-material.js',
+        'node_modules/angular-jwt/dist/angular-jwt.js',
     ])
     .pipe(order([
         'node_modules/angular/angular.js',
@@ -94,6 +95,7 @@ gulp.task('vendor-scripts', () => {
         'node_modules/angular-aria/angular-aria.js',
         'node_modules/moment/moment.js',
         'node_modules/angular-material/angular-material.js',
+        'node_modules/angular-jwt/dist/angular-jwt.js',
     ], { base: './' }))
     .pipe(concat('noinc-vendor.js'))
     .pipe(uglify({mangle:false}))
