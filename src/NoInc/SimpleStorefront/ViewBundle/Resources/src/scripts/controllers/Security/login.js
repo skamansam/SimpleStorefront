@@ -4,6 +4,8 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
         username: null,
         password: null,
     };
+    $scope.hideLogin = true;
+
     $scope.login = () => {
         $http.post('/login', {
             _username: $scope.user.username.toLowerCase().trim(),
@@ -13,7 +15,6 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
                 _username: $scope.user.username.toLowerCase().trim(),
                 _password: $scope.user.password.trim(),
             }).then((response) => {
-                console.info(response);
                 userProvider.setToken(response.data.token);
                 $scope.$emit('userChanged');
                 $state.go('allRecipes');
@@ -21,6 +22,8 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
         });
     };
     if (userProvider.getToken()) {
-        $state.go('app/recipes');
+        $state.go('allRecipes');
+    } else {
+        $scope.hideLogin = false;
     }
 });

@@ -37,10 +37,11 @@ class SecurityController extends Controller
         }
 
         $error = null;
-
-        return $this->render('NoIncSimpleStorefrontViewBundle::Security/login.html.twig', [
+        $response = $this->render('NoIncSimpleStorefrontViewBundle::Security/login.html.twig', [
             'error' => null
         ]);
+        $response->headers->clearCookie('jwt_token');
+        return $response;
     }
 
     /**
@@ -51,7 +52,9 @@ class SecurityController extends Controller
         $this->get('security.token_storage')->setToken(null);
         $this->get('request_stack')->getCurrentRequest()->getSession()->invalidate();
 
-        return new RedirectResponse('/login', 307);
+        $response = new RedirectResponse('/login', 307);
+        $response->headers->clearCookie('jwt_token');
+        return $response;
     }
 
     /**
