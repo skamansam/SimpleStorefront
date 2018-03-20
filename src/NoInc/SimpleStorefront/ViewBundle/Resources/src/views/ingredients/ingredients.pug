@@ -13,5 +13,7 @@ div.ingredients-page(ng-controller="ingredientsController")
             h3 [[item.name ]]
             h4 [[item.price | currency : '$']]
             p(flex) [[item.stock | number : 0]] [[item.measure]] left in stock
-        md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item.id)", ng-if="isAdminUser")
-            md-icon attach_money
+        md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item)", ng-if="isAdminUser")
+            md-icon exposure_plus_1
+        md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item)", ng-if="isAdminUser")
+            md-icon filter_9_plus

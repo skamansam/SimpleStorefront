@@ -17,6 +17,7 @@ app.controller('loginController', ($scope, $http, $state, userProvider) => {
             }).then((response) => {
                 userProvider.setToken(response.data.token);
                 $scope.$emit('userChanged');
+                $scope.$broadcast('userChanged');
                 $state.go('allRecipes');
             });
         });
