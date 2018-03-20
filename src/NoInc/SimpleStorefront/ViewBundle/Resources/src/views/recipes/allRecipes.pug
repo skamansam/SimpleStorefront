@@ -20,9 +20,7 @@ md-card(ng-repeat="recipe in recipes | filter:query")
                 md-icon(ng-show="!ingredientsVisible", on-click="toggleIngredients()") arrow_drop_up
 
     md-card-content(ng-show="ingredientsVisible && isAdminUser")
-        md-list-item.md-3-line(ng-repeat="item in recipe.recipeIngredients"  ng-class="{'md-warn': item.ingredient.stock < 1}")
+        md-list-item.md-3-line(ng-repeat="item in recipe.ingredients"  ng-class="{'md-warn': item.ingredient.stock < 1}")
             .md-list-item-text(layout="column")
-                h3 [[item.ingredientString ]]
-                h4 $[[item.ingredient.price]]
-                p [[item.ingredient.stock || 0]] [[item.ingredient.measure]] left in stock
+                h3 [[item]]
 

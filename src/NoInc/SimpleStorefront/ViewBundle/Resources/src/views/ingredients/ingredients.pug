@@ -1,17 +1,17 @@
-div(ng-controller="ingredientsController")
+div.ingredients-page(ng-controller="ingredientsController")
     h1 All Ingredients
 
-    md-content(layout="row")
-        md-button.md-icon-button
+    md-content.search-bar(layout="row")
+        md-button.md-icon-button.search-icon
             md-icon search
         md-input-container(flex)
           input(ng-model="query['name']", placeholder="Search for Ingredient Name")
 
-    md-list-item.md-whiteframe-3dp.md-3-line(layout="row", ng-repeat="item in ingredients | filter:query" ng-class="{'md-warn': item.stock < 1}")
+    md-list-item.md-3-line(md-whiteframe="[[whiteframeDepth]]", layout="row", ng-init="whiteframeDepth=3", ng-mouseenter="whiteframeDepth=9", ng-mouseleave="whiteframeDepth=3", ng-repeat="item in ingredients | filter:query" ng-class="{'md-warn': item.stock < 1}")
         //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
-        .md-list-item-text(flex, layout="column")
+        .md-list-item-text.info(flex, layout="column")
             h3 [[item.name ]]
-            h4 $[[item.price]]
-            p(flex) [[item.stock || 0]] [[item.measure]] left in stock
-        md-button.md-icon-button(ng-click="purchaseIngredient(item.name)", ng-enabled="canPurchase")
+            h4 [[item.price | currency : '$']]
+            p(flex) [[item.stock | number : 0]] [[item.measure]] left in stock
+        md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item.id)", ng-if="isAdminUser")
             md-icon attach_money

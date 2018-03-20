@@ -9,6 +9,15 @@ types:
       MEASURE_TBSP: Tablespoon
     properties:
 ###### Start Custom Fields
+      id:
+        range: Text
+        ormColumn: type="integer", nullable=false
+        groups:
+        - get_ingredient
+        - set_ingredient
+        - get_recipe
+        - get_recipe_ingredient
+        - get_product
       name:
         range: Text
         ormColumn: type="string", length=180, nullable=false

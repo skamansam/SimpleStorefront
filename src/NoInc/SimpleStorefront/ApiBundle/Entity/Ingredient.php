@@ -26,7 +26,7 @@ class Ingredient
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Groups({"output"})
+     * @Groups({"get_ingredient", "set_ingredient", "get_recipe", "get_recipe_ingredient"})
      *
      * @var int|null
      */
