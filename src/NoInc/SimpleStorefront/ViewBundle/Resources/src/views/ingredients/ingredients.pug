@@ -7,9 +7,11 @@ div(ng-controller="ingredientsController")
         md-input-container(flex)
           input(ng-model="query['name']", placeholder="Search for Ingredient Name")
 
-    md-list-item.md-3-line(ng-repeat="item in ingredients | filter:query" ng-class="{'md-warn': item.stock < 1}")
+    md-list-item.md-whiteframe-3dp.md-3-line(layout="row", ng-repeat="item in ingredients | filter:query" ng-class="{'md-warn': item.stock < 1}")
         //-  img.md-avatar(ng-src="{{item.face}}?{{$index}}", alt="{{item.who}}")
-        .md-list-item-text(layout="column")
+        .md-list-item-text(flex, layout="column")
             h3 [[item.name ]]
             h4 $[[item.price]]
-            p [[item.stock || 0]] [[item.measure]] left in stock
+            p(flex) [[item.stock || 0]] [[item.measure]] left in stock
+        md-button.md-icon-button(ng-click="purchaseIngredient(item.name)", ng-enabled="canPurchase")
+            md-icon attach_money
