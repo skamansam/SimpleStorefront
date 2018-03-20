@@ -31,7 +31,8 @@ app.factory('userProvider', ($http, $cookies, $q, jwtHelper) => {
 
 
     const logout = () => {
-        $cookies.delete('jwt_token');
+        console.info('Logging Out!')
+        $cookies.remove('jwt_token');
         return $http.get('/logout');
     };
     const setToken = (token) => {

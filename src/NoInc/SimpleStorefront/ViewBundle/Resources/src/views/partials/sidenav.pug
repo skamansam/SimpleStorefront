@@ -1,13 +1,13 @@
 md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('gt-md')", md-whiteframe="4")
     md-toolbar
-        h1.md-toolbar-tools [[user.name || "Guest"]]
+        h1.md-toolbar-tools [[user.username || "Guest"]]
     md-content(layout-padding)
         md-list
-            md-list-item(ng-if="user.name")
+            md-list-item(ng-if="user.username")
                 md-icon exit
                 p
-                    a(href, on-click="logout()") Logout
-            md-list-item(ng-if="!user.name")
+                    a(href, ui-sref="logout") Logout
+            md-list-item(ng-if="!user.username")
                 md-icon enter
                 p
                     a(href, ui-sref="login") Login

@@ -1,4 +1,4 @@
-md-content.login-pane(ng-controller="loginController",layout="row",  layout-align="space-around", layout-padding, ng-cloak)
+md-content.login-pane(ng-controller="loginController", ng-if="!hideLogin", layout="row",  layout-align="space-around", layout-padding, ng-cloak)
     md-card(flex="flex" flex-gt-sm="50" flex-gt-md="33")
         md-toolbar
             .md-toolbar-tools

@@ -41,6 +41,14 @@ app.config(($stateProvider, $locationProvider) => {
         data: { pageTitle: 'All Ingredients' },
     };
 
+    const logout = {
+        name: 'logout',
+        url: '/logout',
+        controller: ($state, $cookies, userProvider) =>
+            userProvider.logout().then(() => $state.go('login'))
+        ,
+    };
+
     // * * *
     // End Dashboard pages
     // * * *
@@ -52,6 +60,7 @@ app.config(($stateProvider, $locationProvider) => {
 
     // Dashboard home
     $stateProvider.state(loginPane);
+    $stateProvider.state(logout);
     $stateProvider.state(allRecipes);
     $stateProvider.state(allIngredients);
 
