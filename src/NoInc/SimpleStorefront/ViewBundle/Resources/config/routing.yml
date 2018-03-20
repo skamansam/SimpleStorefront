@@ -21,7 +21,12 @@ no_inc_simplestorefront_view_bundle_html_error:
 ## The routes will have the same structure as the src directory and
 ## they will be automatically picked up by Symfony.
 
-#
+no_inc_simplestorefront_view_bundle_html_login_page:
+   path: /login.html
+   defaults:
+       _controller: 'FrameworkBundle:Template:template'
+       template: '@NoIncSimpleStorefrontViewBundle/Security/login.html.twig'
+
 no_inc_simplestorefront_view_bundle_html_login:
     path: /login_pane.html
     defaults:

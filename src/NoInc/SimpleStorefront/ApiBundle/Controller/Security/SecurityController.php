@@ -1,5 +1,5 @@
 <?php
-namespace NoInc\SimpleStorefront\ViewBundle\Controller;
+namespace NoInc\SimpleStorefront\ApiBundle\Controller\Security;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

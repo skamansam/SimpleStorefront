@@ -1,11 +1,17 @@
+
 noinc_simplestorefront_viewbundle:
     resource: "@NoIncSimpleStorefrontViewBundle/Resources/config/routing.yml"
     prefix:   /
-    
+
 noinc_simplestorefront_apibundle:
     resource: "@NoIncSimpleStorefrontApiBundle/Controller"
     type:     annotation
     prefix:   '/api'
+
+noinc_simplestorefront_security:
+    resource: "@NoIncSimpleStorefrontApiBundle/Controller/Security"
+    type:     annotation
+    prefix:   /
 
 api_login_check:
     path: /api/login_check
