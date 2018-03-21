@@ -2,7 +2,7 @@ md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('
     md-toolbar
         h1.md-toolbar-tools [[user.username || "Guest"]]
     md-content(layout-padding)
-        md-list
+        md-list(ng-click="close()")
             md-list-item(ng-if="user.username")
                 md-icon exit
                 p
