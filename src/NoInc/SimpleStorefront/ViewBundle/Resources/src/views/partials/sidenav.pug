@@ -13,11 +13,6 @@ md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('
                     a(href, ui-sref="login") Login
             md-subheader.md-no-sticky Explore
             md-list-item(ui-sref-active="primary")
-                md-icon shopping
-                p
-                    a(href, ui-sref="products") Products
-                div.md-secondary.md-hue-1 [[productCount]]
-            md-list-item(ui-sref-active="primary")
                 md-icon local_dining
                 p
                     a(href, ui-sref="allRecipes") Recipes
@@ -28,18 +23,3 @@ md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="$mdMedia('
                     a(href, ui-sref="ingredients") Ingredients
                 div.md-secondary.md-hue-1 [[ingredientCount]]
             md-divider
-
-            md-subheader.md-no-sticky(ng-if="user.roles") Create
-            md-list-item(ui-sref-active="primary", ng-if="user.roles")
-                md-icon local_dining
-                p Product
-                div.md-secondary.md-hue-1 [[productCount]]
-            md-list-item(ui-sref-active="primary")
-                md-icon assignment
-                p Ingredient
-            md-list-item(ui-sref-active="primary")
-                md-icon local_dining
-                p Recipe
-            md-list-item
-                md-icon account_circle
-                p User

@@ -67,6 +67,7 @@ security:
         - { path: ^/app/, role: ROLE_USER }
         - { path: ^/api/user, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/counts, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/, role: ROLE_SUPER_ADMIN, methods: [POST, PUT, DELETE] }
         - { path: ^/api/, role: IS_AUTHENTICATED_FULLY, methods: [GET] }
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
