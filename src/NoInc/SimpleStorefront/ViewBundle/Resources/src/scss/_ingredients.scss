@@ -1,4 +1,18 @@
 .ingredients-page {
-    md-list-item {
+    md-list-item {}
+}
+.stockInput {
+    transition: all linear 0.3s;
+    right: 0;
+    opacity: 1;
+    max-width: 4em;
+    width: 4em;
+    &.ng-hide {
+        right: -100%;
+        opacity: 0;
+        width: 0px;
+    }
+    .md-errors-spacer {
+        display: none;
     }
 }

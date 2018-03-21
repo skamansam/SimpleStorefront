@@ -15,5 +15,10 @@ div.ingredients-page(ng-controller="ingredientsController")
             p(flex) [[item.stock | number : 0]] [[item.measure]] left in stock
         md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item)", ng-if="isAdminUser")
             md-icon exposure_plus_1
-        md-button.md-icon-button.md-secondary(ng-click="purchaseIngredient(item)", ng-if="isAdminUser")
+
+        md-input-container.md-secondary.stockInput(flex, ng-show="item.showInput", ng-if="isAdminUser")
+          input(ng-model="item.stock", type="number")
+        md-button.md-icon-button.md-secondary(ng-click="setIngredientCount(item)", ng-if="isAdminUser", ng-show="!item.showInput")
             md-icon filter_9_plus
+        md-button.md-icon-button.md-secondary(ng-click="setIngredientCount(item)", ng-if="isAdminUser", ng-show="item.showInput")
+            md-icon check
