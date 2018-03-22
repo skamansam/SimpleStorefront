@@ -9,14 +9,19 @@ class LedgerListener
     /**
      * @var SecurityContext
      */
-    protected $context;
+    protected $token_storage;
+
+    /**
+     * @var User
+     */
+    protected $user;
 
     /**
      * @param SecurityContext $context
      */
-    public function __construct($context)
+    public function __construct($token_storage, $user)
     {
-        $this->context = $context;
+        $this->token_storage = $token_storage;
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -28,7 +33,7 @@ class LedgerListener
             return;
         }
         $ledger->setPurchasedAt(new \DateTime("now"));
-        $ledger->setUser($this->context->getUser());
+        $ledger->setUser($this->token_storage->getToken()->getUser());
 
         $product = $ledger->getProduct();
         $product->setQuantity($product->getQuantity() - 1)

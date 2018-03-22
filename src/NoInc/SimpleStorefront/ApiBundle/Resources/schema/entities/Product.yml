@@ -25,4 +25,10 @@ types:
         groups:
         - get_product
         - set_product
+      price_cents:
+        range: Number
+        cardinality: (0..1)
+        groups:
+        - get_product
+        - set_product
 ###### End Custom Fields

@@ -38,13 +38,13 @@ class Ledger
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="NoInc\SimpleStorefront\ApiBundle\Entity\Recipe")
+     * @ORM\ManyToOne(targetEntity="NoInc\SimpleStorefront\ApiBundle\Entity\Product")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"get_ledger", "set_ledger"})
      *
-     * @var Recipe|null
+     * @var Product|null
      */
-    protected $recipe;
+    protected $product;
 
     /**
      * @ORM\Column(nullable=false)
@@ -84,16 +84,16 @@ class Ledger
         return $this->user;
     }
 
-    public function setRecipe(?Recipe $recipe): self
+    public function setProduct(?Product $product): self
     {
-        $this->recipe = $recipe;
+        $this->product = $product;
 
         return $this;
     }
 
-    public function getRecipe(): ?Recipe
+    public function getProduct(): ?Product
     {
-        return $this->recipe;
+        return $this->product;
     }
 
     public function setPurchased_at(\DateTimeInterface $purchased_at): self

@@ -55,6 +55,14 @@ class Product
      */
     protected $quantity;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Groups({"get_product", "set_product"})
+     *
+     * @var float|null
+     */
+    protected $price_cent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,5 +108,23 @@ class Product
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * @param float|null $price_cent
+     */
+    public function setPrice_cent($price_cent): self
+    {
+        $this->price_cent = $price_cent;
+
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getPrice_cent()
+    {
+        return $this->price_cent;
     }
 }
