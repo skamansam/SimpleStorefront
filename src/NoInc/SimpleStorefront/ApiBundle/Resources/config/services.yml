@@ -2,3 +2,6 @@ services:
     'NoInc\SimpleStorefront\ApiBundle\Normalizer\RecipeNormalizer':
         decorates: 'api_platform.jsonld.normalizer.item'
         arguments: [ '@NoInc\SimpleStorefront\ApiBundle\Normalizer\RecipeNormalizer.inner' ]
+    'NoInc\SimpleStorefront\ApiBundle\Listener\LedgerListener':
+        arguments:
+            - ['@security.token_storage']

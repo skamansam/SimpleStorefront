@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace NoInc\SimpleStorefront\ApiBundle\Entity;
 
-use NoInc\SimpleStorefront\ApiBundle\Normalizer\IngredientNormalizer;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -76,16 +74,5 @@ class RecipeIngredient
     public function getIngredient(): ?Ingredient
     {
         return $this->ingredient;
-    }
-    /**
-     * @Serializer\VirtualProperty()
-     * @Serializer\SerializedName("ingredientString")
-     * @Groups({"get_recipe_ingredient", "get_recipe", "get_product"})
-     *
-     */
-    public function getIngredientString(): ?string
-    {
-        $ingredientString = (new IngredientNormalizer)->encode($this, null, array());
-        return $ingredientString;
     }
 }

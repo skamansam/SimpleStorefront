@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NoInc\SimpleStorefront\ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,9 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ApiResource(iri="http://schema.org/Thing", collectionOperations={"get"={"normalization_context"={"groups"={"get_recipe"}}, "denormalization_context"={"groups"={"set_recipe"}}, "method"="GET"}}, itemOperations={"get"={"normalization_context"={"groups"={"get_recipe"}}, "denormalization_context"={"groups"={"set_recipe"}}, "method"="GET"}})
+ * @ApiResource(iri="http://schema.org/Recipe", collectionOperations={"get"={"normalization_context"={"groups"={"get_recipe"}}, "denormalization_context"={"groups"={"set_recipe"}}, "method"="GET"}}, itemOperations={"get"={"normalization_context"={"groups"={"get_recipe"}}, "denormalization_context"={"groups"={"set_recipe"}}, "method"="GET"}})
+ * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via \[\[suitableForDiet\]\]. The \[\[keywords\]\] property can also be used to add more detail.
  *
- * @see http://schema.org/Thing Documentation on Schema.org
+ * @see http://schema.org/Recipe Documentation on Schema.org
  */
 class Recipe
 {
@@ -31,11 +33,10 @@ class Recipe
 
     /**
      * @ORM\Column(type="string", length=180, nullable=false)
+     * @ApiProperty(iri="http://schema.org/name")
      * @Groups({"get_recipe", "set_recipe"})
      *
-     * @var string
-     *
-     * @Assert\NotNull
+     * @var string|null the name of the item
      */
     protected $name;
 
@@ -51,20 +52,20 @@ class Recipe
 
     /**
      * @ORM\Column(nullable=true)
+     * @ApiProperty(iri="http://schema.org/image")
      * @Groups({"get_recipe", "set_recipe", "get_product"})
      *
-     * @var string
-     *
-     * @Assert\NotNull
+     * @var string|null An image of the item. This can be a \[\[URL\]\] or a fully described \[\[ImageObject\]\].
      */
     protected $image;
 
     /**
      * @ORM\ManyToMany(targetEntity="NoInc\SimpleStorefront\ApiBundle\Entity\RecipeIngredient")
      * @ORM\JoinTable(inverseJoinColumns={@ORM\JoinColumn(unique=true)})
+     * @ApiProperty(iri="http://schema.org/recipeIngredient")
      * @Groups({"get_recipe", "set_recipe", "get_product"})
      *
-     * @var Collection<RecipeIngredient>|null
+     * @var Collection<RecipeIngredient>|null A single ingredient used in the recipe, e.g. sugar, flour or garlic.
      */
     protected $recipeIngredients;
 
@@ -78,14 +79,14 @@ class Recipe
         return $this->id;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -102,14 +103,14 @@ class Recipe
         return $this->price;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
 
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }

@@ -99,11 +99,6 @@ class User extends \FOS\UserBundle\Model\User
      */
     protected $passwordRequestedAt;
 
-    public function getName(): ?string
-    {
-        return $this->username;
-    }
-
     public function getId(): ?int
     {
         return $this->id;

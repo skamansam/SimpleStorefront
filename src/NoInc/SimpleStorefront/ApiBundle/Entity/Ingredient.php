@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NoInc\SimpleStorefront\ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -12,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ApiResource(iri="http://schema.org/Thing", collectionOperations={"get"={"normalization_context"={"groups"={"get_ingredient"}}, "denormalization_context"={"groups"={"set_ingredient"}}, "method"="GET"}, "post"={"normalization_context"={"groups"={"get_ingredient"}}, "denormalization_context"={"groups"={"set_ingredient"}}, "method"="POST"}}, itemOperations={"purchase"={"route_name"="put_ingredient_purchase"}, "get"={"normalization_context"={"groups"={"get_ingredient"}}, "denormalization_context"={"groups"={"set_ingredient"}}, "method"="GET"}, "put"={"normalization_context"={"groups"={"get_ingredient"}}, "denormalization_context"={"groups"={"set_ingredient"}}, "method"="PUT"}, "delete"={"normalization_context"={"groups"={"get_ingredient"}}, "denormalization_context"={"groups"={"set_ingredient"}}, "method"="DELETE"}})
+ * The most generic type of item.
  *
  * @see http://schema.org/Thing Documentation on Schema.org
  */
@@ -26,7 +28,7 @@ class Ingredient
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Groups({"get_ingredient", "set_ingredient", "get_recipe", "get_recipe_ingredient"})
+     * @Groups({"output"})
      *
      * @var int|null
      */
@@ -34,11 +36,10 @@ class Ingredient
 
     /**
      * @ORM\Column(type="string", length=180, nullable=false)
+     * @ApiProperty(iri="http://schema.org/name")
      * @Groups({"get_ingredient", "set_ingredient", "get_recipe", "get_recipe_ingredient", "get_product"})
      *
-     * @var string
-     *
-     * @Assert\NotNull
+     * @var string|null the name of the item
      */
     protected $name;
 
@@ -77,14 +78,14 @@ class Ingredient
         return $this->id;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
