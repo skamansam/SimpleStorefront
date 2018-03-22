@@ -11,9 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ApiResource(iri="http://schema.org/Thing", collectionOperations={"get"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="GET"}, "post"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="POST"}}, itemOperations={"get"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="GET"}, "put"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="PUT"}, "delete"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="DELETE"}}, attributes={"filters"={"product.recipe_filter"}, "normalization_context"={"groups"={""}}, "denormalization_context"={"groups"={""}}})
+ * @ApiResource(iri="http://schema.org/Product", collectionOperations={"get"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="GET"}, "post"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="POST"}}, itemOperations={"get"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="GET"}, "put"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="PUT"}, "delete"={"normalization_context"={"groups"={"get_product"}}, "denormalization_context"={"groups"={"set_product"}}, "method"="DELETE"}}, attributes={"filters"={"product.recipe_filter"}, "normalization_context"={"groups"={""}}, "denormalization_context"={"groups"={""}}})
+ * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
  *
- * @see http://schema.org/Thing Documentation on Schema.org
+ * @see http://schema.org/Product Documentation on Schema.org
  */
 class Product
 {

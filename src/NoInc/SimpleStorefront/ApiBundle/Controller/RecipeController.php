@@ -9,12 +9,4 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RecipeController extends Controller
 {
-    /**
-     * @Route("/recipes", name="list_recipes")
-     * @Method("GET")
-     */
-    // public function listRecipeAction(Request $request, Recipe $recipe)
-    // {
-    //     return $recipe;
-    // }
 }
