@@ -1,0 +1,31 @@
+types:
+  Ledger:
+    parent: false
+    resourceEnabled: true
+    properties:
+###### Start Custom Fields
+      user:
+        range: User
+        cardinality: (*..1)
+        groups:
+        - get_ledger
+        - set_ledger
+      product:
+        range: Product
+        cardinality: (*..1)
+        groups:
+        - get_ledger
+        - set_ledger
+      purchased_at:
+        range: Date
+        ormColumn: nullable=false
+        groups:
+        - get_ledger
+        - set_ledger
+      purchase_price_cents:
+        range: Integer
+        ormColumn: nullable=false
+        groups:
+        - get_ledger
+        - set_ledger
+###### End Custom Fields

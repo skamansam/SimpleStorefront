@@ -1,0 +1,23 @@
+types:
+  Ledger:
+    defaultOperations:
+      collection_get:
+        normalization_context:
+          groups:
+          - get_ledger
+        denormalization_context:
+          groups:
+          - set_ledger
+      collection_post:
+        enabled: false
+      item_get:
+        normalization_context:
+          groups:
+          - get_ledger
+        denormalization_context:
+          groups:
+          - set_ledger
+      item_put:
+        enabled: false
+      item_delete:
+        enabled: false
