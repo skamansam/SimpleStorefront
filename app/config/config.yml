@@ -63,7 +63,7 @@ doctrine:
 
 lexik_jwt_authentication:
     private_key_path: %kernel.root_dir%/../var/jwt/private_key.pem
-    public_key_path:  %kernel.root_dir%/../var/jwt/public.pem
+    public_key_path:  %kernel.root_dir%/../var/jwt/public_key.pem
     pass_phrase:      %secret%
     token_ttl:        360000000000
 

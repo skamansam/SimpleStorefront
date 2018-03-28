@@ -1,6 +1,6 @@
-noinc_simplestorefront_viewbundle_html_home:
-    resource: "@NoIncSimpleStorefrontViewBundle/Controller"
-    type:     annotation
+# noinc_simplestorefront_viewbundle_html_home:
+#     resource: "@NoIncSimpleStorefrontViewBundle/Controller"
+#     type:     annotation
 
 no_inc_simplestorefront_view_bundle_html_index:
     path: /app
